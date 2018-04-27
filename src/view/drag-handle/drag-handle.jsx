@@ -7,13 +7,13 @@ import getWindowFromRef from '../get-window-from-ref';
 import getDragHandleRef from './util/get-drag-handle-ref';
 import type {
   Props,
-  DragHandleProps,
+    DragHandleProps,
 } from './drag-handle-types';
 import type {
   MouseSensor,
-  KeyboardSensor,
-  TouchSensor,
-  CreateSensorArgs,
+    KeyboardSensor,
+    TouchSensor,
+    CreateSensorArgs,
 } from './sensor/sensor-types';
 import type {
   DraggableId,
@@ -273,7 +273,9 @@ export default class DragHandle extends Component<Props> {
 
   render() {
     const { children, isEnabled } = this.props;
-
-    return children(this.getProvided(isEnabled));
+    if (children) {
+      return children(this.getProvided(isEnabled));
+    }
+    return <div />;
   }
 }
